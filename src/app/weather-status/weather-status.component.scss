@@ -1,0 +1,90 @@
+.details{
+    border:1px solid #ddd;
+    // padding: 2%;
+    width: 100%;
+    margin:15% 8%;
+    min-height: 80%;
+
+}
+
+.search{
+    border:1px solid #ddd;
+    padding: 2%;
+    width: 100%;
+    margin:15% 8%;
+    min-height: 78%;
+}
+.refer{
+    float: right;
+    cursor: pointer;
+}
+.content{
+    display: flex;
+    // margin-top:3%
+}
+.content > div{
+    margin-top:18px;
+}
+.dailycontent{
+    display: flex;
+    margin:5% 10%;
+}
+.err{
+    color:red;
+}
+.refresh{
+    padding:0px 5px;
+    cursor: pointer;
+}
+
+.close{
+    padding:0px 5px;
+    cursor: pointer;
+
+}
+.add{
+    cursor: pointer;
+}
+
+.item-content{
+    text-transform: capitalize !important;
+    cursor: pointer;
+
+}
+
+.clear{
+    float: right;
+    margin-top: 2%;
+}
+.heading{
+    padding: 15px 20px;
+    font-weight: 500;
+    border-bottom: 1px solid #ddd;
+}
+.text{
+    text-transform: capitalize !important;
+}
+p{
+    margin:15px 0px;
+    font-size: 0.9rem;
+}
+.tempera > p{
+    text-align: center;
+    margin:8px 0px;
+    font-size: 0.9rem;
+}
+
+mat-form-field{
+    width: 100%;
+}
+.spin{
+    transform: rotate(100deg);
+     -webkit-transform: rotate(100deg);
+     -ms-transform: rotate(100deg);
+     -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  }

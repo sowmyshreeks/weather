@@ -1,0 +1,58 @@
+<div>
+  <mat-grid-list cols="2" rowHeight="650px">
+    <mat-grid-tile>
+           <div class="search">
+              <mat-form-field appearance="legacy">
+                  <mat-label>Type City Name</mat-label>
+                  <input matInput [(ngModel)]="areaName">
+                  <mat-icon class="add" (click)="cityName(areaName)" matSuffix>add</mat-icon>
+                  <mat-hint class="err">{{errorMsg}}</mat-hint>
+              </mat-form-field>
+
+              <mat-list>
+                  <div mat-subheader>Recent Locations</div>
+                  <mat-divider></mat-divider>
+                  <mat-list-item *ngFor="let rl of recentLocations; let i = index">
+                    <div class="item-content" (click)="cityName(rl.name)" mat-line>{{rl.name}} - {{rl.weathtemp | number:'1.0-0'}} C &nbsp; {{rl.weathDesc}}</div>
+                    <mat-icon class="refresh" (click)="currentCity(rl.name, i)">autorenew</mat-icon>
+                    <mat-icon class="close" (click)="removeCity(rl)">close</mat-icon>
+                  </mat-list-item>
+                </mat-list>
+                <button class="clear" mat-stroked-button color="primary"(click)="clear()">Clear</button>
+           </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+            <div class="details" *ngIf="weathReport">
+              <!-- <div> -->
+                <div class="heading"> {{weathReport.city.name}}
+                <img src="./assets/img/ref2e.png"  width="4%" (click)="cityName(weathReport.city.name)"  class="refer" [ngClass]=" spin == true ? 'spin': ''">
+                </div>
+                
+                <div class="content">
+                  <img src="./assets/img/rainy-7.svg"  width="25%" *ngIf="weathReport.list[0].weather[0].main == 'Rain'">
+                  <img src="./assets/img/cloudy.svg"  width="25%" *ngIf="weathReport.list[0].weather[0].main == 'Clouds'">
+                  <img src="./assets/img/day.svg"  width="25%" *ngIf="weathReport.list[0].weather[0].main == 'Clear'">
+                  <img src="./assets/img/snowy-6.svg"  width="25%" *ngIf="weathReport.list[0].weather[0].main == 'Snow'">
+
+                  <div>
+                    <p>{{weathReport.list[0].temp.day | number:'1.0-0'}} C</p>
+                    <p class="text">{{weathReport.list[0].weather[0].description}}</p>
+                    <p>Wind: {{weathReport.list[0].speed}} ms {{weathReport.list[0].deg}} deg</p>
+                    <p>Pressure: {{weathReport.list[0].pressure}}</p>
+                  </div>
+                </div>
+                <div class="dailycontent">
+                    <div class="tempera" *ngFor="let wr of weekReport.slice(1); let i = index">
+                        <p>{{wr.date | date:'d' }}</p>
+                        <p>{{wr.date | date:'EEE' }}</p>
+                        <img src="./assets/img/rainy-7.svg"  width="auto" *ngIf="wr.type == 'Rain'">
+                        <img src="./assets/img/cloudy.svg"  width="auto" *ngIf="wr.type == 'Clouds'">
+                        <img src="./assets/img/day.svg"  width="auto" *ngIf="wr.type == 'Clear'">
+                        <img src="./assets/img/snowy-6.svg"  width="auto" *ngIf="wr.type == 'Snow'">
+                        <p>{{wr.dayTemp}} C</p>
+                    </div>
+              </div>
+            </div>
+    </mat-grid-tile>
+</mat-grid-list>
+</div>
