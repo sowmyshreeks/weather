@@ -35,7 +35,7 @@ export class WeatherStatusComponent implements OnInit {
     this.spin = true;
     this.locationName = name;
     this.errorMsg = '';
-    
+
    if(this.locationName){
     this.report.getstatus(this.locationName).subscribe(res=>{
       this.weathReport = res;
@@ -58,7 +58,8 @@ export class WeatherStatusComponent implements OnInit {
       this.errorMsg = err
     })
    }else{
-    this.errorMsg = 'Enter City Name'
+    this.errorMsg = 'Enter City Name';
+    this.spin = false;
    }
   }
 
@@ -71,7 +72,6 @@ export class WeatherStatusComponent implements OnInit {
     this.report.getCurrentCity(city).subscribe(res=>{
       this.recentLocations[i].weathDesc = res['weather'][0].description;
       this.recentLocations[i].weathtemp = Math.floor(res['main'].temp)
-
     },
     err=>{
       this.errorMsg = err

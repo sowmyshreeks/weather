@@ -23,7 +23,6 @@
     </mat-grid-tile>
     <mat-grid-tile>
             <div class="details" *ngIf="weathReport">
-              <!-- <div> -->
                 <div class="heading"> {{weathReport.city.name}}
                 <img src="./assets/img/ref2e.png"  width="4%" (click)="cityName(weathReport.city.name)"  class="refer" [ngClass]=" spin == true ? 'spin': ''">
                 </div>
@@ -33,6 +32,7 @@
                   <img src="./assets/img/cloudy.svg"  width="25%" *ngIf="weathReport.list[0].weather[0].main == 'Clouds'">
                   <img src="./assets/img/day.svg"  width="25%" *ngIf="weathReport.list[0].weather[0].main == 'Clear'">
                   <img src="./assets/img/snowy-6.svg"  width="25%" *ngIf="weathReport.list[0].weather[0].main == 'Snow'">
+                  <img src="./assets/img/snowy-4.svg"  width="25%" *ngIf="weathReport.list[0].weather[0].main == 'Haze'">
 
                   <div>
                     <p>{{weathReport.list[0].temp.day | number:'1.0-0'}} C</p>
@@ -49,6 +49,8 @@
                         <img src="./assets/img/cloudy.svg"  width="auto" *ngIf="wr.type == 'Clouds'">
                         <img src="./assets/img/day.svg"  width="auto" *ngIf="wr.type == 'Clear'">
                         <img src="./assets/img/snowy-6.svg"  width="auto" *ngIf="wr.type == 'Snow'">
+                        <img src="./assets/img/snowy-4.svg"  width="auto" *ngIf="wr.type == 'Haze'">
+
                         <p>{{wr.dayTemp}} C</p>
                     </div>
               </div>
