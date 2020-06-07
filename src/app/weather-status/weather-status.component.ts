@@ -34,7 +34,8 @@ export class WeatherStatusComponent implements OnInit {
   cityName(name){
     this.spin = true;
     this.locationName = name;
-    this.errorMsg = ''
+    this.errorMsg = '';
+    
    if(this.locationName){
     this.report.getstatus(this.locationName).subscribe(res=>{
       this.weathReport = res;
@@ -43,7 +44,6 @@ export class WeatherStatusComponent implements OnInit {
        val['type'] = res['list'][i].weather[0].main
       this.spin = false;
       })
-      // console.log(this.weekReport)
 
       if(res['city']){
           this.recentLocations.unshift({name:res['city'].name, weathtemp: res['list'][0].temp.day, weathDesc: res['list'][0].weather[0].description})
@@ -82,11 +82,4 @@ export class WeatherStatusComponent implements OnInit {
     this.recentLocations = []
   }
 
-  // currentForecast(nam){
-  //   this.report.getstatus(nam).subscribe(res=>{
-  //     console.log(res)
-  //   },err=>{
-  //     this.errorMsg = err
-  //   })
-  // }
 }
